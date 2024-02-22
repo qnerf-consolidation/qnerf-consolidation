@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QNeRF Consolidation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBKFF5WPJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-KBKFF5WPJF');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Consolidating Attention Features for Multi-view Image Editing</h1>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                   <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="static/images/teaser.jpg">
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p class="subtitle has-text-centered">
+            Given a multi-view image set of a static scene, we apply a geometric edit of the images, 
+            ensuring consistency between the different views.
+          </p>
+          <p class="subtitle has-text-centered">
+            To do so, we use a diffusion model to edit the images, and consolidate the attention features of the generated images 
+            along the denoising process, making them consistent. 
+          </p>
+          <p class="subtitle has-text-centered">
+            The consolidation is done by training Neural Radiance Field on the features, and then inject rendered consistent 
+            features to the diffusion model.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="video-cont">
+        <video controls autoplay>
+          <source src="static/images/nerf_result_720.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div>
+      
+      <p class="subtitle has-text-centered">
+        In the above video we show NeRFs trained on our edited images.        
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Large-scale text-to-image models enable a wide range of image editing techniques, 
+            using text prompts or even spatial controls.
+            However, applying these editing methods to multi-view images depicting a single 
+            scene leads to 3D-inconsistent results.
+            In this work, we focus on spatial control-based geometric 
+            manipulations and introduce a method to consolidate the editing process across various views. 
+            We build on two insights: (1) maintaining consistent features throughout the generative 
+            process helps attain consistency in multi-view editing, and (2) the queries in 
+            self-attention layers significantly influence the structure of the generated images. 
+            Hence, we propose to improve the geometric consistency of the edited images by improving 
+            the consistency of the queries.
+            To do so, we introduce QNeRF: A neural radiance field trained on the internal query 
+            features of the edited images. Once trained, this network can be used to render 3D-consistent queries.
+             These are then softly injected back into the self-attention layers during generation, 
+             greatly improving multi-view consistency.
+            We refine the process through a progressive, iterative method that better 
+            consolidates queries across the diffusion timesteps.
+            We compare our method to a range of existing techniques for cross-frame consistency
+             and demonstrate that it can achieve better multi-view consistency and higher 
+             fidelity to the source scene.
+            These advantages allow us to train NeRFs with fewer visual artifacts, 
+            that are better aligned with the target geometry.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">What if we edit the images independently?</h2>
+      <div class="video-cont">
+        <video controls autoplay>
+          <source src="static/images/motivation.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section hero is-light">
+      <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">How does it work?</h2>
+        <img src="static/images/consolidation.jpg">
+          <div class="content has-text-justified">
+            <p>
+              We simultaneously generate multi-view edited images with a diffusion model. 
+              To consolidate the images, along the denoising process we 
+              (1) extract self-attention queries from the network, 
+              (2) train a NeRF (termed QNeRF) on the extracted queries and render consolidated queries, and 
+              (3) softly inject the rendered queries back to the network for each view. 
+              We repeat these steps throughout the denoising process.
+          </p>
+          <p>
+            In practice, we perform the denoising process in intervals. In each interval, 
+            we interleave consolidation steps with steps that allow the features to evolve. 
+            At the last step of each inverval we extract self-attention queries and train a QNeRF on them.
+            Rendered queries of this QNeRF are injected in the consolidation steps of the next interval.
+          </p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">Denoising Interval</h2>
+      <img src="static/images/interval.jpg">
+      <div class="content has-text-justified">
+        <p>
+          In each multi-view denoising interval we have query-guided steps, followed by steps without guidance.
+           In query-guided steps, we alter the noisy latent code with an objective of proximity between the self-attention
+            queries generated by the latent code, and queries rendered from the QNeRF. At the last step of the interval,
+             we extract the generated queries and use them to train the QNeRF that provides guidance for the next interval.
+              Query guidance consolidates the geometry across the different views. In addition, we inject the keys and values
+               of self-attention layers from the original images to preserve the appearance.
+      </p>
+    </div>
+    <div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop is-centered has-text-centered">
+  <h2 class="title is-3">QNeRF</h2>
+    <img src="static/images/qnerf_arch.jpg">
+      <div class="content has-text-justified">
+        <p>
+          The centerpiece of our approach is the QNeRF - a Neural Radiance Field trained on query features
+          extracted from the diffusion model during the denoising process.
+          The inherent 3D consistency of the QNeRF drives the consolidation of the queries.
+      </p>
+      <p>
+        The architecture of the QNeRF is illustrated above. Nine heads are attached to the base network,
+         to produce queries corresponding to nine self-attention layers of the diffusion model. 
+         Each group of heads corresponds to a self-attention layer of a certain resolution, 
+         and the number displayed above the arrow represents the number of channels in that group (1280, 640, 320).
+      </p>
+    </div>
+    <video controls autoplay>
+      <source src="static/images/rendered_Q.mp4" type="video/mp4">
+    </video>
+    <p>
+      In the above videos we demonstrate the effect of the QNeRF. On the left of the three videos we show the extracted 
+      queries from the diffusion model, on which a QNeRF is trained. Then, on the right we show the rendered queries from the corresponding
+      QNeRF. The QNeRF consolidates the queries as can be seen by the more consistent right part of each of the videos.
+      From left to right, the queries are of resolutions 16, 32, 64.
+    </p>
+</div>
+</section>
+
+
+<section class="is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <h2 class="title is-3">Comparison with baselines</h2>
+      <div class="content has-text-justified">
+        <p>
+          As can be seen, existing approaches for multi-view editing, such as those using flows (TokenFlow) or iterative dataset updates
+           for pixel-space NeRFs (IN2N and IN2N-CSD), often implicitly assume that we do not change the underlying geometry. Violating this assumption
+            leads to visual artifacts, like duplicated and translucent limbs, or just lower quality.
+
+      </p>
+      <div class="comparison">
+        <video controls autoplay class="comp-vid">
+          <source src="static/images/statue2_comparison.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="comparison">
+        <video controls autoplay class="comp-vid">
+          <source src="static/images/person-small_comparison.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="comparison">
+        <video controls autoplay class="comp-vid">
+          <source src="static/images/person-small_comparison_depth.mp4" type="video/mp4">
+        </video>
+      </div>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page. If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
