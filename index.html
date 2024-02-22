@@ -45,8 +45,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Consolidating Attention Features for Multi-view Image Editing</h1>
-
+          <h1 class="title is-1 publication-title">Consolidating Attention Features for <br> Multi-view Image Editing</h1>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -90,18 +89,16 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
-          <p class="subtitle has-text-centered">
+          <p class="">
             Given a multi-view image set of a static scene, we apply a geometric edit of the images, 
             ensuring consistency between the different views.
-          </p>
-          <p class="subtitle has-text-centered">
+            <br>
             To do so, we use a diffusion model to edit the images, and consolidate the attention features of the generated images 
             along the denoising process, making them consistent. 
-          </p>
-          <p class="subtitle has-text-centered">
+            <br>
             The consolidation is done by training Neural Radiance Field on the features, and then inject rendered consistent 
             features to the diffusion model.
           </p>
@@ -116,7 +113,7 @@
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="video-cont">
-        <video controls autoplay>
+        <video controls>
           <source src="static/images/nerf_result_720.mp4" type="video/mp4">
         </video>
       </div>
@@ -141,26 +138,19 @@
           <p>
             Large-scale text-to-image models enable a wide range of image editing techniques, 
             using text prompts or even spatial controls.
-            However, applying these editing methods to multi-view images depicting a single 
-            scene leads to 3D-inconsistent results.
-            In this work, we focus on spatial control-based geometric 
-            manipulations and introduce a method to consolidate the editing process across various views. 
+            However, applying these editing methods to multi-view images depicting a single scene leads to 3D-inconsistent results.
+            In this work, we focus on spatial control-based geometric manipulations and introduce a method to consolidate the editing process across various views. 
             We build on two insights: (1) maintaining consistent features throughout the generative 
-            process helps attain consistency in multi-view editing, and (2) the queries in 
-            self-attention layers significantly influence the structure of the generated images. 
-            Hence, we propose to improve the geometric consistency of the edited images by improving 
-            the consistency of the queries.
-            To do so, we introduce QNeRF: A neural radiance field trained on the internal query 
-            features of the edited images. Once trained, this network can be used to render 3D-consistent queries.
-             These are then softly injected back into the self-attention layers during generation, 
-             greatly improving multi-view consistency.
-            We refine the process through a progressive, iterative method that better 
-            consolidates queries across the diffusion timesteps.
-            We compare our method to a range of existing techniques for cross-frame consistency
-             and demonstrate that it can achieve better multi-view consistency and higher 
-             fidelity to the source scene.
-            These advantages allow us to train NeRFs with fewer visual artifacts, 
-            that are better aligned with the target geometry.
+            process helps attain consistency in multi-view editing, and (2) the queries in self-attention layers 
+            significantly influence the image structure. Hence, we propose to improve the geometric consistency of the edited images by enforcing the consistency of the queries.
+            To do so, we introduce QNeRF, a neural radiance field trained on the internal query features of the edited images. 
+            Once trained, QNeRF can render 3D-consistent queries, which are then softly injected back into the self-attention
+            layers during generation, greatly improving multi-view consistency.
+            We refine the process through a progressive, iterative method that better consolidates 
+            queries across the diffusion timesteps.
+            We compare our method to a range of existing techniques
+            and demonstrate that it can achieve better multi-view consistency and higher fidelity to the input scene.
+            These advantages allow us to train NeRFs with fewer visual artifacts, that are better aligned with the target geometry.
           </p>
         </div>
       </div>
@@ -174,7 +164,7 @@
     <div class="container is-max-desktop is-centered has-text-centered">
       <h2 class="title is-3">What if we edit the images independently?</h2>
       <div class="video-cont">
-        <video controls autoplay>
+        <video controls>
           <source src="static/images/motivation.mp4" type="video/mp4">
         </video>
       </div>
@@ -249,7 +239,7 @@
          and the number displayed above the arrow represents the number of channels in that group (1280, 640, 320).
       </p>
     </div>
-    <video controls autoplay>
+    <video controls>
       <source src="static/images/rendered_Q.mp4" type="video/mp4">
     </video>
     <p>
@@ -274,17 +264,17 @@
 
       </p>
       <div class="comparison">
-        <video controls autoplay class="comp-vid">
+        <video controls class="comp-vid">
           <source src="static/images/statue2_comparison.mp4" type="video/mp4">
         </video>
       </div>
       <div class="comparison">
-        <video controls autoplay class="comp-vid">
+        <video controls class="comp-vid">
           <source src="static/images/person-small_comparison.mp4" type="video/mp4">
         </video>
       </div>
       <div class="comparison">
-        <video controls autoplay class="comp-vid">
+        <video controls class="comp-vid">
           <source src="static/images/person-small_comparison_depth.mp4" type="video/mp4">
         </video>
       </div>
